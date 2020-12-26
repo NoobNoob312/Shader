@@ -10,6 +10,7 @@ uniform float colorG;
 uniform float colorB;
 uniform float skColor;
 
+/*!!!To-Do: Evnt. Kacheln und weitere anpassungen in form von uniform variablen !!!*/
 
 //vec3 skullColor = vec3(skColor);
 
@@ -24,7 +25,9 @@ float rectFunc(float x, float from, float to)
 {
     return step(from, x) - step(to, x);
 }
- 
+
+
+//gerade nicht benuetzt
 vec3 drawPixels(vec2 uv, float xStart, float xStop, float yStart, float yStop, vec3 paint, vec3 c){
    float xPixel = rectFunc(uv.x,xStart,xStop);
    float yPixel = rectFunc(uv.y,yStart,yStop);
@@ -46,14 +49,6 @@ vec3 drawPixelsFreq(vec2 uv, float xStart, float xStop, float yStart, float ySto
  
 void main() {
 
-    
-    //map coordinates in range [0,1]
-    vec2 coord01 = gl_FragCoord.xy / u_resolution;
-    //setup coordinate system
-    // maps normalized [0..1] coordinates
-    vec2 coord = mix(vec2(-6, -6), vec2(19, 16), coord01);
-//    vec2 coord = coord01* 15.;
-  
     //white background
     vec3 color = black;
  
@@ -62,11 +57,11 @@ void main() {
     float freqRest = abs(2.6*sin(u_time *3.));
  
   vec2 uv = gl_FragCoord.xy / u_resolution;
- 
+
    float pixelCount = 21.;
     uv = uv *pixelCount;
   
-    vec2 pixel = floor(uv * pixelCount);
+
    // move space from the center to the vec2(0.0)
     uv -= vec2(10);
     // rotate the space
