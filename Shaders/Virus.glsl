@@ -9,8 +9,8 @@ uniform vec2 u_resolution;
 uniform float u_time;
 uniform sampler2D u_buffer0;
 
-// uniform float virusZoom;
-// uniform float virusEmergence; // 0.5
+uniform float virusZoom;
+uniform float virusEmergence; // 0.5 /*0,2 bzw 0,3 für super coolen leucht effekt*/
 
 /*
 
@@ -110,7 +110,7 @@ void main(){
    // Reversed the Z-coordinates to see the virus
    // Benutzen normalize() (Einheitsvektor = Länge 1), da in diesem Fall nur die Richtung relevatn ist & diese soll unabhängig von der Länge des Vektors sein
    // Betrachte von dem Punkt (0, 0, -8) den Virus in der Richtung "rd"
-   vec3 rd = normalize(vec3((gl_FragCoord.xy - .5*u_resolution.xy)/u_resolution.y * 0.9/*virusZoom*/, 1.));
+   vec3 rd = normalize(vec3((gl_FragCoord.xy - .5*u_resolution.xy)/u_resolution.y * virusZoom, 1.));
    vec3 ro = vec3(0., 0., -8.);
    
    // w: weighting factor
@@ -161,7 +161,7 @@ void main(){
       d = max(d, 0.04); // Increased the minimum, just a little.
       
       // step forward
-      t += d*0.5;//virusEmergence;
+      t += d*virusEmergence;//virusEmergence;
       
    }
 

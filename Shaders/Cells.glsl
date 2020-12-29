@@ -8,8 +8,8 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
-//uniform float cellDiffusion; // 0.5
-//uniform float cellZoom;
+uniform float cellDiffusion; // 0.5
+uniform float cellZoom;
 
 vec3 backgroundColor = vec3(0.0);
 
@@ -19,8 +19,8 @@ vec2 random( vec2 p ) {
 
 void main()
 {
-    float cellDiffusion = 0.5;
-    float cellZoom = 10.0;
+   /* float cellDiffusion = 0.5;
+    float cellZoom = 10.0;*/
 
     // Normalized pixel coordinates (from 0 to 1)
     vec2 st = gl_FragCoord.xy/u_resolution.xy;

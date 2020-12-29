@@ -8,7 +8,7 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
-/* uniform float heartSize;
+uniform float heartSize;
 uniform float heartPulsationSpeed; // 1.5
 uniform float heartFrequencyOfOnePulsation; // 3.0
 uniform float heartSwing; // 4.0 */
@@ -29,7 +29,7 @@ void main() {
     /*
     mod(x,y): x mod y -> pulsation speed -> higher value, slower pulsation -> wenn pulsationSpeed = dividend -> 0.999
     */
-    float tt = mod(u_time, /*heartPulsationSpeed*/pulsationSpeed)/1.5; 
+    float tt = mod(u_time, heartPulsationSpeed/*pulsationSpeed*/)/1.5; 
 
     /*
     pow(tt,.2)= tt^0,2 -> Größe des Ausschlags des Herzes 
@@ -46,12 +46,12 @@ void main() {
     dadurch dass der Wert tt sich zwischen 0 und -0,999 bewegt, geschieht je nach der Zeit das Pulsieren mit dem Stocken 
     -> je kleiner der Wert, desto niedriger ist der Ausschlag
     */
-    ss = 1.0 + ss*0.5*sin(tt*6.2831*frequencyOfOnePulsation/*heartFrequencyOfOnePulsation*/ + st.y*0.5)*exp(-tt*swing/*heartSwing*/);
+    ss = 1.0 + ss*0.5*sin(tt*6.2831*/*frequencyOfOnePulsation*/heartFrequencyOfOnePulsation + st.y*0.5)*exp(-tt*/*swing*/heartSwing);
     
     /*
     Anhand der Multiplikation mit st mit sich selbst und den Werten wird das das Koordinatensystems, je nach Zeit und Frequenz vergrößert/verkleinert
     */
-    st *= vec2(size/*heartSize*/) + ss*vec2(0.5,0.5); 
+    st *= vec2(/*size*/heartSize) + ss*vec2(0.5,0.5); 
 
 
 // shape
