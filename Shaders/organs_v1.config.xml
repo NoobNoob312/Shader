@@ -170,32 +170,6 @@
         </Keyframe>
       </Keyframes>
     </Uniform>
-    <Uniform>
-      <UniformName>bloodCell2DZoom</UniformName>
-      <Keyframes>
-        <Keyframe>
-          <Time>30.75</Time>
-          <Value>1</Value>
-        </Keyframe>
-        <Keyframe>
-          <Time>36</Time>
-          <Value>0.2</Value>
-        </Keyframe>
-      </Keyframes>
-    </Uniform>
-    <Uniform>
-      <UniformName>bloodCell2DSpeed</UniformName>
-      <Keyframes>
-        <Keyframe>
-          <Time>30.75</Time>
-          <Value>1.5</Value>
-        </Keyframe>
-        <Keyframe>
-          <Time>36</Time>
-          <Value>1</Value>
-        </Keyframe>
-      </Keyframes>
-    </Uniform>
   </Uniforms>
   <Tracks>
     <Track>
@@ -203,7 +177,7 @@
       <ShaderKeyframes>
         <ShaderKeyframe>
           <Time>0</Time>
-          <ShaderPath>.\Herz.glsl</ShaderPath>
+          <ShaderPath>.\Heart.glsl</ShaderPath>
         </ShaderKeyframe>
         <ShaderKeyframe>
           <Time>15.6138515</Time>
@@ -212,10 +186,6 @@
         <ShaderKeyframe>
           <Time>23.1316319</Time>
           <ShaderPath>.\Cells.glsl</ShaderPath>
-        </ShaderKeyframe>
-        <ShaderKeyframe>
-          <Time>30.6494122</Time>
-          <ShaderPath>.\BloodCells2D.glsl</ShaderPath>
         </ShaderKeyframe>
       </ShaderKeyframes>
     </Track>
