@@ -28,35 +28,108 @@ float Torus(vec3 p, vec2 r){
     return length (vec2(x,p.y))-r.y;   
 }
 
+
 float GetDist(vec3 p) {
     //Raymarch anhand der dinstanzfelder 1x----2x----3x----4x
     
-  vec4 s = vec4(4, 1, 6, 1);
-    
-    float sphereDist =  length(p-s.xyz)-s.w;
 
-    //Berechne Distanzfeld zu Torus
-    float td = Torus(p-vec3(0,1,6), vec2(1.5, 1.0)); 
-    float td2 = Torus(p-vec3(1,5,6), vec2(1.5, 1.0)); 
-    
+
+    //p.x = fract(p.x/4.)*4.-2.;
+  
+vec2 radius = vec2(0.53,0.5);
+
+
+    //set torus1
+    vec3 tp = p-vec3(-1.,3.,8);
+    tp.yz *= rot(0.5*sin(u_time));
+    tp.xy *= rot(3.*cos(u_time));
+   
+
+//set torus2
+     vec3 tp2 = p-vec3(1.,4.,6);
+    tp2.yz *= rot(2.*sin(u_time));
+    tp2.xy *= rot(2.*cos(u_time));
+
+//set torus3
+     vec3 tp3 = p-vec3(-1.,6.,8);
+    tp3.yz *= rot(1.*sin(u_time));
+    tp3.xy *= rot(4.*cos(u_time));
+
+
+//set torus4
+     vec3 tp4 = p-vec3(1.,7.,10);
+    tp4.yz *= rot(5.*sin(u_time));
+    tp4.xy *= rot(2.*cos(u_time));
+
+//set torus5
+     vec3 tp5 = p-vec3(-0,5.,10);
+    tp5.yz *= rot(3.1*sin(u_time));
+    tp5.xy *= rot(3.*cos(u_time));
+
+
+//set torus6
+     vec3 tp6 = p-vec3(1.,8.,8);
+    tp6.yz *= rot(4.4*sin(u_time));
+    tp6.xy *= rot(6.*cos(u_time));
+
+//set torus7
+     vec3 tp7 = p-vec3(3.,6.,8);
+    tp7.yz *= rot(-1.*sin(u_time));
+    tp7.xy *= rot(1.*cos(u_time));
+
+
+//set torus8
+     vec3 tp8 = p-vec3(-3.,4.,10);
+    tp8.yz *= rot(2.*sin(u_time));
+    tp8.xy *= rot(6.*cos(u_time));
+
+//set torus9
+     vec3 tp9 = p-vec3(-1,8.,10);
+    tp9.yz *= rot(-.1*sin(u_time));
+    tp9.xy *= rot(-3.*cos(u_time));
+
+
+
+    //Calc Distance
+    float td = Torus(tp, radius); 
+    float td2 = Torus(tp2, radius); 
+    float td3 = Torus(tp3, radius); 
+    float td4 = Torus(tp4, radius); 
+    float td5 = Torus(tp5, radius); 
+    float td6 = Torus(tp6, radius); 
+    float td7 = Torus(tp7, radius); 
+    float td8 = Torus(tp8, radius); 
+    float td9 = Torus(tp9, radius); 
+      
+
+    //float planeDist = p.y; //ground plain
+
 
     //Nehme kleinsten Abstand und passe somit die Schrittweite in RayMarch an
     float d = min(td2,td);
-   
+    d = min(td3,d);
+    d = min(td4,d);
+    d = min(td5,d);
+    d = min(td6,d);
+    d = min(td7,d);
+    d = min(td8,d);
+    d = min(td9,d);
+
     return d;
 }
 
 
 //Funktion für Raymarch rechnung zum schnittpunkt https://www.shadertoy.com/view/4dSfRc
 float RayMarch(vec3 ro, vec3 rd) {
-    float dO=1.;
-    
+    float dO=0.;
+
     for(int i = 0; i < MAX_STEPS; i++) {
         vec3 p = ro + rd*dO;
 
         //Bekommen Distanz zwischen Torus und vektor zurück
         float dS = GetDist(p);
         dO += dS;
+        
 
         if(dO>MAX_DIST || dS<SURF_DIST) break;
     }
@@ -99,6 +172,7 @@ float GetLight(vec3 p, vec3 lPos) {
 
 
     //Nilufar stinkt
+    //Schatten werfen
     //float d = RayMarch(p+n*SURF_DIST*2., l);
     //dif*= 5. /dot(lightPos -p,lightPos-p);
     //if(d<length(lightPos-p)) dif *= .1;
@@ -116,39 +190,42 @@ vec3 createBloodCell(vec3 ro, vec3 rd, vec3 light, vec3 col){
     float dif = GetLight(p,light);
 
     //return col += vec3(dif, .0, .0);
-     return col += vec3(pow (dif, .60),0.,0);
+     return col += vec3(pow (dif, .60),0,0);
 
 }
 
 void main()
 {
-    //Anpassen der Auflösung + sinus änderung für reinzoom effekt
+    //Anpassen der Auflösung so das 0,0 in der Mitte ist + sinus änderung für reinzoom effekt
     //compute ray direction for each pixel
-    vec2 uv = (gl_FragCoord.xy - .5*u_resolution.xy)/u_resolution.xy;
+    vec2 uv =1.5*(gl_FragCoord.xy - .5*u_resolution.xy)/u_resolution.y*sin(u_time);
+    //vec2 uv =1.5*(gl_FragCoord.xy - .5*u_resolution.xy)/u_resolution.y;
 
-    //vergrößern des Systems/Fläche/Bereich 
-    uv*=2.8;
-   
+
 
     vec3 col = vec3(0.0, 0.0, 0.0);
 
     //ray origins. punkt von dem wir aus schauen
-    vec3 ro = vec3(0.,abs(1.5*sin(u_time))+3.,0.);
+    vec3 ro = vec3(0.,2.5+3.,0.5);
         
  
     //compute ray direction for each pixel
 
-    //ändere uv vor jedem neuen
-    uv = rot(u_time*2.) * uv;
-    vec3 rd1 = normalize(vec3(uv.x+0.5*sin(u_time) , uv.y, 0.5)); //ray direction, horizont, vertikal, vo/zurueck
+ 
+    uv = rot(u_time*3.) * uv;
+    vec3 rd = normalize(vec3(uv.x, uv.y, 1)); //ray direction, horizont, vertikal, vo/zurueck
 
     //Licht ändert zyklisch die position
-    vec3 light = vec3(0.5*sin(u_time),abs(0.5*sin(u_time))+1.,1.);
+    //vec3 light = vec3(0,4.,1.);
+      //light.xy *= rot(u_time*3.)*uv; //Teste mit rotation mitdrehen
+    
+    vec3 light = vec3(1.+sin(u_time),3.+cos(u_time),1.);
+  
+
     
 
 //Erstelle Blutkörperchen
-    col = createBloodCell(ro,rd1,light,col);
- 
+    col = createBloodCell(ro,rd,light,col);
     gl_FragColor = vec4(col,1.0);
     
 }
