@@ -8,16 +8,16 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
-uniform float heartSize;
+ uniform float heartSize;
 uniform float heartPulsationSpeed; // 1.5
 uniform float heartFrequencyOfOnePulsation; // 3.0
-uniform float heartSwing; // 4.0 */
+uniform float heartSwing; // 4.0 
 
 // Variable
-float size = 0.5;
+/*float size = 0.5;
 float pulsationSpeed = 1.5;
 float frequencyOfOnePulsation = 3.0;
-float swing = 4.0;
+float swing = 4.0;*/
 
 // draws two circles and pulls them down to make a heart
 void main() {
@@ -46,7 +46,7 @@ void main() {
     dadurch dass der Wert tt sich zwischen 0 und -0,999 bewegt, geschieht je nach der Zeit das Pulsieren mit dem Stocken 
     -> je kleiner der Wert, desto niedriger ist der Ausschlag
     */
-    ss = 1.0 + ss*0.5*sin(tt*6.2831*/*frequencyOfOnePulsation*/heartFrequencyOfOnePulsation + st.y*0.5)*exp(-tt*/*swing*/heartSwing);
+    ss = 1.0 + ss*0.5*sin(tt*6.2831* /*frequencyOfOnePulsation*/ heartFrequencyOfOnePulsation + st.y*0.5)*exp(-tt*/*swing*/heartSwing);
     
     /*
     Anhand der Multiplikation mit st mit sich selbst und den Werten wird das das Koordinatensystems, je nach Zeit und Frequenz vergrößert/verkleinert
@@ -95,6 +95,7 @@ void main() {
     smoothstep(untere Grenze, obere Grenze, Wert der zwischen den Grenzen interpoliert werden soll) -> Grenzwerte
     d-r: Bestimmt evtl. die Diagonale, damit das Herz im Koordinatensystem sichtbar ist und im Intervall liegt
     **/
-    vec3 color = mix( vec3(0.015,0.009,0.040), vec3(0.8, 0.0, 0.0),  smoothstep(-0.018, -0.006, d-r) );
+    vec3 hcol = vec3(0.9,0.2*st.y,0.0)*(1.0-0.25*length(st));
+    vec3 color = mix( vec3(0.015,0.009,0.040), hcol,  smoothstep(-0.018, -0.006, d-r) );
     gl_FragColor = vec4(color,1.0);
 }
