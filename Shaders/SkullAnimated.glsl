@@ -65,16 +65,18 @@ void main() {
    // move space from the center to the vec2(0.0)
     uv -= vec2(10);
     // rotate the space
-    uv = rotate2d(abs(sin(u_time)*PI +3.4)) * uv;
+    //uv = rotate2d(abs(sin(u_time)*PI +3.4)) * uv;
     // move it back to the original place
     uv += vec2(10);
 
 //Knochen linksOben
+
+
 color = drawPixelsFreq(uv, 5., 6., 14.,15., skullColor, color, freqRest);
 color = drawPixelsFreq(uv, 4.,5., 15.,16., skullColor, color, freqRest);
 color = drawPixelsFreq(uv, 2., 4., 16.,17., skullColor, color, freqRest);
 color = drawPixelsFreq(uv, 3., 4., 17.,18., skullColor, color, freqRest);
- 
+
  
 //Knochen rechts oben
  color = drawPixelsFreq(uv, 15., 16., 14.,15., skullColor, color, freqRest);
@@ -98,6 +100,9 @@ color = drawPixelsFreq(uv, 3., 4., 4.,5., skullColor, color, freqRest);
    
 //Stirn
 //Zeile 14
+
+
+
 color = drawPixelsFreq(uv, 7., 14., 14.,15., skullColor, color, freqRest);
 //Zeile 13
 color = drawPixelsFreq(uv, 6., 15., 13.,14., skullColor, color, freqRest);

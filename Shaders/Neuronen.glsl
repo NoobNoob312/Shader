@@ -45,7 +45,7 @@ void main() {
         0.1: Bestimmt die Brreite der Neuronen
         length(cos(o.xy) + sin(o.yz)): Patternbildung -> Cos & Sin -> wenn einzelnd, dann sieht man die Kurven besser
         */
-        p += (.1 - length(cos(o.xy) + sin(o.yz))) * st * 0.836;
+        p += (.1 - length(cos(o.xy) + sin(o.yz))) * st * neuronNumber;
     }
     
     gl_FragColor = vec4((vec3(9.000,0.158,0.760)) / length(p) * vec3(neuronRed,0.012,0.038/*neuronRed,neuronGreen,neuronBlue*/), 1.0);
