@@ -8,10 +8,16 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
- uniform float heartSize;
+uniform float heartSize;
 uniform float heartPulsationSpeed; // 1.5
 uniform float heartFrequencyOfOnePulsation; // 3.0
 uniform float heartSwing; // 4.0 
+uniform float heartRed;
+uniform float heartGreen;
+uniform float heartBlue;
+uniform float heartBgRed;
+uniform float heartBgGreen;
+uniform float heartBgBlue;
 
 // Variable
 /*float size = 0.5;
@@ -95,7 +101,7 @@ void main() {
     smoothstep(untere Grenze, obere Grenze, Wert der zwischen den Grenzen interpoliert werden soll) -> Grenzwerte
     d-r: Bestimmt evtl. die Diagonale, damit das Herz im Koordinatensystem sichtbar ist und im Intervall liegt
     **/
-    vec3 hcol = vec3(0.9,0.2*st.y,0.0)*(1.0-0.25*length(st));
-    vec3 color = mix( vec3(0.015,0.009,0.040), hcol,  smoothstep(-0.018, -0.006, d-r) );
+    vec3 hcol = vec3(heartBgRed,heartGreen*st.y,heartBlue)*(1.0-0.25*length(st)); // heart red = (0.9, 0 * st.y, 0.)
+    vec3 color = mix( vec3(heartBgRed, heartBgGreen, heartBgBlue), hcol, smoothstep(-0.018, -0.006, d-r) );   // black background (0,0,0)
     gl_FragColor = vec4(color,1.0);
 }
