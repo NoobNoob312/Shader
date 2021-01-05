@@ -6,7 +6,7 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
-uniform float neuronRed;
+uniform float neuronRed;    // 0.440
 uniform float neuronGreen;
 uniform float neuronBlue;
 uniform float neuronNumber;
@@ -14,7 +14,7 @@ uniform float neuronSpeedMovement;
 
 // Variables 
 const int numberNeurons = 22;
-float speedMovement = 14.504;
+//float speedMovement = 14.504;
 
 
 void main() {
@@ -25,12 +25,14 @@ void main() {
     vec3 st = vec3(.5) - vec3(gl_FragCoord.xy, 1) / u_resolution.y;
 
     vec3 p, o;
+    
+    //highp int n = int(neuronNumber);
 
     // Wie oft Neuronen gezeichnet werden
     for(int i = 0; i < numberNeurons; i++)
     {
         o = p;
-        o.z -= u_time * speedMovement;  
+        o.z -= u_time * neuronSpeedMovement;  
         float a = o.z * .1;
 
         /*
@@ -46,5 +48,5 @@ void main() {
         p += (.1 - length(cos(o.xy) + sin(o.yz))) * st * 0.836;
     }
     
-    gl_FragColor = vec4((vec3(9.000,0.158,0.760)) / length(p) * vec3(0.440,0.012,0.038/*neuronRed,neuronGreen,neuronBlue*/), 1);
+    gl_FragColor = vec4((vec3(9.000,0.158,0.760)) / length(p) * vec3(neuronRed,0.012,0.038/*neuronRed,neuronGreen,neuronBlue*/), 1.0);
 }
