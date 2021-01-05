@@ -10,6 +10,9 @@ uniform float u_time;
 
 uniform float cellDiffusion; // 0.5
 uniform float cellZoom;
+uniform float cellRed;  // 1.85
+uniform float cellGreen; // 0.25
+uniform float cellBlue; // 0.25
 
 vec3 backgroundColor = vec3(0.0);
 
@@ -19,8 +22,8 @@ vec2 random( vec2 p ) {
 
 void main()
 {
-   /* float cellDiffusion = 0.5;
-    float cellZoom = 10.0;*/
+    //float cellDiffusion = 0.5;
+    //float cellZoom = 10.0;
 
     // Normalized pixel coordinates (from 0 to 1)
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
@@ -58,9 +61,9 @@ void main()
     col += m_dist;  // Zeichne Minimum Distanz (Distanz Feld)
     col -= clamp(sin(1.*m_dist), 0., 1.) * cellDiffusion;   // min(max(sin(1.*m_dist), minVal), maxVal) -> Gibt Werte zwischen 0 und 1 aus; Alles über 1 = 1 & alles unter 0 = 0
     
-    col.r += 1.85;  
-    col.b += .25;   
-    col.g += .25; 
+    col.r += cellRed;     
+    col.g += cellGreen; 
+    col.b += cellBlue;
   
     // Output to screen
     gl_FragColor = vec4(col, 1.0);
