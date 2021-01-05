@@ -11,6 +11,13 @@ uniform sampler2D u_buffer0;
 
 uniform float virusZoom;
 uniform float virusEmergence; // 0.5 /*0,2 bzw 0,3 für super coolen leucht effekt*/
+uniform float virusRotation1;
+uniform float virusRotation2;
+uniform float virusPosX1;
+uniform float virusPosX2;
+
+
+
 
 /*
 
@@ -35,8 +42,10 @@ uniform float virusEmergence; // 0.5 /*0,2 bzw 0,3 für super coolen leucht effe
 
 */
 
+mat2 rot(float a) {
+    return mat2(cos(a), -sin(a), sin(a), cos(a));
+}
 
-mat2 rM; // Rotation matrix.
 
 
 // IQ's noise
@@ -86,10 +95,29 @@ float map(vec3 p) {
     // Performs the same as above. "rM" is produced just once, before the raymarching loop.
     // I think it'd be faster, but GPUs are strange, so who knows.
     // Duke tells me that "r *= rM" can break in some older browsers. Hence, the longhand.
-    p.xy = p.xy*rM;
-    p.xz = p.xz*rM;
+    mat2 rotationSp1 = rot(u_time*(1.25+virusRotation1));
+    mat2 rotationSp2 = rot(u_time*(-.95-virusRotation2));
+
+
+    vec3 sp1 = p+vec3(0.+virusPosX1,0,0); 
+    sp1.xy *= rotationSp1;
+    sp1.xz *= rotationSp1;
+
+    vec3 sp2 = p-vec3(0.+virusPosX2,0,0);
+
+    sp2.xy *= rotationSp2;
+    sp2.xz *= rotationSp2;
+
+    float spikeball1 = spikeball(sp1) +  fpn(p*50. + u_time*15.)*0.8;
+
+
+
+    float spikeball2 = spikeball(sp2) +  fpn(p*50. + u_time*15.)*0.8;
+
+
+    float d = min(spikeball1,spikeball2);
 	
-    return spikeball(p) +  fpn(p*50. + u_time*15.)*0.8;
+    return d;
 }
 
 // See "Combustible Voronoi"
@@ -126,11 +154,7 @@ void main(){
    // total color
    vec3 tc = vec3(0.);
     
-    
-   // Setting up the matrix outside of the loop, which might save a few cycles.
-   float cs = cos(u_time*.4);   // cs: cos
-   float si = sin(u_time*.4);   // si: sin
-   rM = mat2(cs, si, -si, cs);  // rM: Rotationsmatrix 
+
     
    // Tidied the raymarcher up a bit. Plus, got rid some redundancies.
 

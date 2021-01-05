@@ -232,6 +232,14 @@
           <Time>30</Time>
           <Value>1.85</Value>
         </Keyframe>
+        <Keyframe>
+          <Time>31</Time>
+          <Value>0.025</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>33</Time>
+          <Value>0</Value>
+        </Keyframe>
       </Keyframes>
     </Uniform>
     <Uniform>
@@ -245,6 +253,14 @@
           <Time>30</Time>
           <Value>0.25</Value>
         </Keyframe>
+        <Keyframe>
+          <Time>31</Time>
+          <Value>0.025</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>33</Time>
+          <Value>0</Value>
+        </Keyframe>
       </Keyframes>
     </Uniform>
     <Uniform>
@@ -257,6 +273,236 @@
         <Keyframe>
           <Time>30</Time>
           <Value>0.25</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>31</Time>
+          <Value>0.025</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>33</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>neuronNumber</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>15.5</Time>
+          <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>18.44</Time>
+          <Value>0.8</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>23</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>bloodCellTunnelIntensity</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>33.86</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>35</Time>
+          <Value>0.8</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>36.94</Time>
+          <Value>0.8</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>38</Time>
+          <Value>0.7</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>39.5</Time>
+          <Value>0.3</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>40</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>bloodCellRed</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>33</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>35</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>38.38</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>39.5</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>40</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>bloodCellRotationSpeed</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>33.01</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>40</Time>
+          <Value>1.0020144</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>bloodCellZoom</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>33</Time>
+          <Value>7</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>35</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>35.81</Time>
+          <Value>-5.01457167</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>36</Time>
+          <Value>-5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>36.91</Time>
+          <Value>-3.15270424</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>39</Time>
+          <Value>-2.48278975</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>39.42</Time>
+          <Value>-1.946858</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>40</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>virusZoom</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>0</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>40</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>45</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>46.01</Time>
+          <Value>0.6</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>46.76</Time>
+          <Value>0.6</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>49</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>75.8012543</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>virusEmergence</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>40</Time>
+          <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>47.12</Time>
+          <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>49</Time>
+          <Value>0.1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>51</Time>
+          <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>113.345</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>virusRotation1</UniformName>
+      <Keyframes />
+    </Uniform>
+    <Uniform>
+      <UniformName>virusRotation2</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>48.37</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>49.01</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>virusPosX1</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>46</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>50</Time>
+          <Value>2</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>virusPosX2</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>46</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>50</Time>
+          <Value>2.02173471</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>
@@ -277,9 +523,23 @@
           <Time>23.1316319</Time>
           <ShaderPath>.\Cells.glsl</ShaderPath>
         </ShaderKeyframe>
+        <ShaderKeyframe>
+          <Time>32.8</Time>
+          <ShaderPath>..\..\glsl\BloodTunnel.glsl</ShaderPath>
+        </ShaderKeyframe>
+        <ShaderKeyframe>
+          <Time>40.1870461</Time>
+          <ShaderPath>.\Virus.glsl</ShaderPath>
+        </ShaderKeyframe>
+        <ShaderKeyframe>
+          <Time>55.65954</Time>
+          <ShaderPath>.\Heart.glsl</ShaderPath>
+        </ShaderKeyframe>
       </ShaderKeyframes>
     </Track>
   </Tracks>
-  <Textures />
-  <SoundFileName>frametraxx_Anywhere.mp3</SoundFileName>
+  <Textures>
+    <string>..\..\glsl\texture.png</string>
+  </Textures>
+  <SoundFileName>.\frametraxx_Anywhere.mp3</SoundFileName>
 </DemoData2>
