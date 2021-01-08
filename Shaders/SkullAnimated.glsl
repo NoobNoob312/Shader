@@ -18,7 +18,7 @@ uniform float skMovement;
 vec3 eyeColor = vec3(skEyeColorR,skEyeColorG, skEyeColorB); 
 vec3 white = vec3(0.975,0.975,0.975);
 vec3 black = vec3(0.010,0.010,0.010);
-vec3 skullColor = white;
+vec3 skullColor = vec3(skColor);
  
  
  

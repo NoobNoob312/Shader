@@ -16,6 +16,14 @@
           <Time>15.63</Time>
           <Value>1.2</Value>
         </Keyframe>
+        <Keyframe>
+          <Time>94.31409</Time>
+          <Value>22</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>110.111305</Time>
+          <Value>0</Value>
+        </Keyframe>
       </Keyframes>
     </Uniform>
     <Uniform>
@@ -45,6 +53,14 @@
           <Time>21.14753</Time>
           <Value>0</Value>
         </Keyframe>
+        <Keyframe>
+          <Time>94.31409</Time>
+          <Value>0.25</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>109.923035</Time>
+          <Value>1</Value>
+        </Keyframe>
       </Keyframes>
     </Uniform>
     <Uniform>
@@ -61,6 +77,18 @@
         <Keyframe>
           <Time>15.63</Time>
           <Value>1.95</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>107.65</Time>
+          <Value>2.36491776</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>109.31</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>112.366447</Time>
+          <Value>0</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>
@@ -79,9 +107,13 @@
           <Time>15.63</Time>
           <Value>4</Value>
         </Keyframe>
+        <Keyframe>
+          <Time>94.31409</Time>
+          <Value>12</Value>
+        </Keyframe>
       </Keyframes>
     </Uniform>
-       <Uniform>
+    <Uniform>
       <UniformName>neuronRed</UniformName>
       <Keyframes>
         <Keyframe>
@@ -91,6 +123,22 @@
         <Keyframe>
           <Time>23.18</Time>
           <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>82</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>83.41012</Time>
+          <Value>0.1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>84.5</Time>
+          <Value>0.4</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>90.6</Time>
+          <Value>1</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>
@@ -102,16 +150,24 @@
           <Value>0.012</Value>
         </Keyframe>
         <Keyframe>
-          <Time>17.8</Time>
-          <Value>0.6118</Value>
-        </Keyframe>
-        <Keyframe>
           <Time>19.67773</Time>
           <Value>0</Value>
         </Keyframe>
         <Keyframe>
           <Time>21.2950745</Time>
           <Value>0.0353</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>82.11216</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>84.5</Time>
+          <Value>0.012</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>90.6</Time>
+          <Value>1</Value>
         </Keyframe>
         <Keyframe>
           <Time>113.345</Time>
@@ -127,16 +183,20 @@
           <Value>0.038</Value>
         </Keyframe>
         <Keyframe>
-          <Time>17.8</Time>
-          <Value>0.6118</Value>
-        </Keyframe>
-        <Keyframe>
-          <Time>19.67773</Time>
-          <Value>1</Value>
-        </Keyframe>
-        <Keyframe>
           <Time>21.2950745</Time>
           <Value>0.0353</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>82.11216</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>84.5</Time>
+          <Value>0.038</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>90.6</Time>
+          <Value>1</Value>
         </Keyframe>
         <Keyframe>
           <Time>113.345</Time>
@@ -154,6 +214,14 @@
         <Keyframe>
           <Time>30</Time>
           <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>78.7537842</Time>
+          <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>81.77632</Time>
+          <Value>1</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>
@@ -669,6 +737,14 @@
           <Time>15.5</Time>
           <Value>1</Value>
         </Keyframe>
+        <Keyframe>
+          <Time>94.25406</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>109.682907</Time>
+          <Value>0</Value>
+        </Keyframe>
       </Keyframes>
     </Uniform>
     <Uniform>
@@ -693,7 +769,7 @@
         </Keyframe>
         <Keyframe>
           <Time>113.345</Time>
-          <Value>1</Value>
+          <Value>0</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>
@@ -957,6 +1033,77 @@
         <Keyframe>
           <Time>80.71487</Time>
           <Value>9</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>iCamPosX</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>94.52256</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>iCamRotX</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>94.52256</Time>
+          <Value>0.422783434</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>iCamPosY</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>94.52256</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>iCamRotY</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>94.52256</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>iCamPosZ</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>94.52256</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>iCamRotZ</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>94.52256</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>neuronRedIntensitiy</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>0</Time>
+          <Value>9</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>81.33</Time>
+          <Value>9</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>90.6</Time>
+          <Value>1</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>

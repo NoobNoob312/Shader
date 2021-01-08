@@ -7,8 +7,9 @@ uniform vec2 u_mouse;
 uniform float u_time;
 
 uniform float neuronRed;    // 0.440
-uniform float neuronGreen;
-uniform float neuronBlue;
+uniform float neuronRedIntensitiy; 
+uniform float neuronGreen; //0.012
+uniform float neuronBlue;  //0.038
 uniform float neuronNumber;
 uniform float neuronSpeedMovement;
 
@@ -48,5 +49,5 @@ void main() {
         p += (.1 - length(cos(o.xy) + sin(o.yz))) * st * neuronNumber;
     }
     
-    gl_FragColor = vec4((vec3(9.000,0.158,0.760)) / length(p) * vec3(neuronRed,0.012,0.038/*neuronRed,neuronGreen,neuronBlue*/), 1.0);
+    gl_FragColor = vec4((vec3(neuronRedIntensitiy,neuronGreen,neuronBlue)) / length(p) * vec3(neuronRed,neuronGreen,neuronBlue/*neuronRed,neuronGreen,neuronBlue*/), 1.0);
 }

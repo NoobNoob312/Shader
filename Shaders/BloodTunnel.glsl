@@ -11,7 +11,7 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform float u_time;
 uniform sampler2D u_buffer1;
-
+uniform  float tod;
 
 mat2 rot(float a) {
     return mat2(cos(a), -sin(a), sin(a), cos(a));
@@ -211,8 +211,13 @@ void main()
  
     //compute ray direction for each pixel
 
- 
-    uv = rot(-u_time*3.) * uv;
+    if (tod>0.){
+    uv = (rot(-u_time*3.)) * uv;
+    }
+    else{
+     uv = (rot(-)) * uv;   
+    }
+    
     vec3 rd = normalize(vec3(uv.x, uv.y, 1)); //ray direction, horizont, vertikal, vo/zurueck
 
     //Licht ändert zyklisch die position
