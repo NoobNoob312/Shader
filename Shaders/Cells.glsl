@@ -13,6 +13,7 @@ uniform float cellZoom;
 uniform float cellRed;  // 1.85
 uniform float cellGreen; // 0.25
 uniform float cellBlue; // 0.25
+uniform float cellMovement;
 
 vec3 backgroundColor = vec3(0.0);
 
@@ -47,7 +48,7 @@ void main()
             
             vec2 point = random(i_st + neighbor); // Zufällige Position vom aktuellen + Nachbarposition im Raster
             
-            point = vec2(.5) + .5 * (sin(u_time + 6.075 * point)); // u_time: cells movement from point is between 0 and 1
+            point = vec2(.5) + .5 * (sin(cellMovement + 6.075 * point)); // u_time: cells movement from point is between 0 and 1
                    
             vec2 diff = neighbor + point - f_st; // Vektor zwischen dem Pixel und dem Punkt
             
