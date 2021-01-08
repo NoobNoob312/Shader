@@ -433,6 +433,14 @@
           <Value>1</Value>
         </Keyframe>
         <Keyframe>
+          <Time>53.74</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>56</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
           <Time>75.8012543</Time>
           <Value>0</Value>
         </Keyframe>
@@ -450,12 +458,44 @@
           <Value>0.5</Value>
         </Keyframe>
         <Keyframe>
-          <Time>49</Time>
+          <Time>48.4</Time>
           <Value>0.1</Value>
         </Keyframe>
         <Keyframe>
-          <Time>51</Time>
+          <Time>50</Time>
           <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>50.5</Time>
+          <Value>0.1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>51.5</Time>
+          <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>52.374588</Time>
+          <Value>0.1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>53.9881172</Time>
+          <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>54.2</Time>
+          <Value>0.1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>54.5928154</Time>
+          <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>55.56</Time>
+          <Value>0.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>55.9957848</Time>
+          <Value>0.2</Value>
         </Keyframe>
         <Keyframe>
           <Time>113.345</Time>
@@ -506,6 +546,148 @@
         </Keyframe>
       </Keyframes>
     </Uniform>
+    <Uniform>
+      <UniformName>heartRed</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>0</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>15.5</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>heartGreen</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>0</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>113.345</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>heartBlue</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>0</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>113.345</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>heartBgRed</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>0</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>113.345</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>heartBgGreen</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>0</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>113.345</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>heartBgBlue</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>0</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>113.345</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>skEyeColorR</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>57.7672119</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>57.98033</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>58.3</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>skEyeColorG</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>59.5</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>59.8400879</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>60.5</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>skEyeColorB</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>61.5</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>61.9623146</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>62.1098938</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>skMovement</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>0</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>113.345</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
   </Uniforms>
   <Tracks>
     <Track>
@@ -532,7 +714,23 @@
           <ShaderPath>.\Virus.glsl</ShaderPath>
         </ShaderKeyframe>
         <ShaderKeyframe>
-          <Time>55.65954</Time>
+          <Time>56.2</Time>
+          <ShaderPath>.\SkullAnimated.glsl</ShaderPath>
+        </ShaderKeyframe>
+        <ShaderKeyframe>
+          <Time>63.8875465</Time>
+          <ShaderPath>..\..\glsl\BloodTunnel.glsl</ShaderPath>
+        </ShaderKeyframe>
+        <ShaderKeyframe>
+          <Time>74.4664154</Time>
+          <ShaderPath>.\Cells.glsl</ShaderPath>
+        </ShaderKeyframe>
+        <ShaderKeyframe>
+          <Time>82.35859</Time>
+          <ShaderPath>.\Neuronen.glsl</ShaderPath>
+        </ShaderKeyframe>
+        <ShaderKeyframe>
+          <Time>94.61664</Time>
           <ShaderPath>.\Heart.glsl</ShaderPath>
         </ShaderKeyframe>
       </ShaderKeyframes>

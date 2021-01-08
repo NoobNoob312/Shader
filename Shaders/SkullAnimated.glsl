@@ -5,16 +5,17 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
-uniform float colorR;
-uniform float colorG;
-uniform float colorB;
+uniform float skEyeColorR;
+uniform float skEyeColorG;
+uniform float skEyeColorB;
 uniform float skColor;
+uniform float skMovement;
 
 /*!!!To-Do: Evnt. Kacheln und weitere anpassungen in form von uniform variablen !!!*/
 
 //vec3 skullColor = vec3(skColor);
 
-vec3 eyeColor = vec3(colorR,colorG, colorB); 
+vec3 eyeColor = vec3(skEyeColorR,skEyeColorG, skEyeColorB); 
 vec3 white = vec3(0.975,0.975,0.975);
 vec3 black = vec3(0.010,0.010,0.010);
 vec3 skullColor = white;
@@ -53,8 +54,8 @@ void main() {
     vec3 color = black;
  
  
-    float freqKiefer = abs(1.6*sin(u_time *3.));
-    float freqRest = abs(2.6*sin(u_time *3.));
+    float freqKiefer = abs(1.6*sin(u_time *3.)*skMovement);
+    float freqRest = abs(2.6*sin(u_time *3.)*skMovement);
  
   vec2 uv = gl_FragCoord.xy / u_resolution;
 
