@@ -81,7 +81,7 @@
         </Keyframe>
       </Keyframes>
     </Uniform>
-    <Uniform>
+       <Uniform>
       <UniformName>neuronRed</UniformName>
       <Keyframes>
         <Keyframe>
@@ -161,12 +161,28 @@
       <UniformName>cellZoom</UniformName>
       <Keyframes>
         <Keyframe>
+          <Time>22.8369179</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
           <Time>23.21</Time>
           <Value>20</Value>
         </Keyframe>
         <Keyframe>
           <Time>30</Time>
           <Value>5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>73.98803</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>84.2840652</Time>
+          <Value>20</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>84.40798</Time>
+          <Value>0</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>
@@ -219,6 +235,18 @@
           <Time>22.95</Time>
           <Value>7</Value>
         </Keyframe>
+        <Keyframe>
+          <Time>81.91014</Time>
+          <Value>10</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>94.70714</Time>
+          <Value>7</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>94.82046</Time>
+          <Value>0</Value>
+        </Keyframe>
       </Keyframes>
     </Uniform>
     <Uniform>
@@ -233,8 +261,8 @@
           <Value>1.85</Value>
         </Keyframe>
         <Keyframe>
-          <Time>31</Time>
-          <Value>0.025</Value>
+          <Time>31.3</Time>
+          <Value>0.25</Value>
         </Keyframe>
         <Keyframe>
           <Time>33</Time>
@@ -276,7 +304,7 @@
         </Keyframe>
         <Keyframe>
           <Time>31</Time>
-          <Value>0.025</Value>
+          <Value>0.25</Value>
         </Keyframe>
         <Keyframe>
           <Time>33</Time>
@@ -328,6 +356,26 @@
           <Time>40</Time>
           <Value>0</Value>
         </Keyframe>
+        <Keyframe>
+          <Time>63.63</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>64.67233</Time>
+          <Value>0.7</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>68.27</Time>
+          <Value>0.7</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>73.48532</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>73.67</Time>
+          <Value>0</Value>
+        </Keyframe>
       </Keyframes>
     </Uniform>
     <Uniform>
@@ -353,6 +401,30 @@
           <Time>40</Time>
           <Value>0</Value>
         </Keyframe>
+        <Keyframe>
+          <Time>64.01869</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>66.6</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>68.37752</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>71.75</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>73.27</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>73.83</Time>
+          <Value>0</Value>
+        </Keyframe>
       </Keyframes>
     </Uniform>
     <Uniform>
@@ -360,11 +432,35 @@
       <Keyframes>
         <Keyframe>
           <Time>33.01</Time>
-          <Value>1</Value>
+          <Value>60</Value>
         </Keyframe>
         <Keyframe>
-          <Time>40</Time>
-          <Value>1.0020144</Value>
+          <Time>34.7383232</Time>
+          <Value>60</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>41.92631</Time>
+          <Value>50</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>54.51</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>64.15</Time>
+          <Value>23.54362</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>65.79</Time>
+          <Value>21</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>68.8414459</Time>
+          <Value>20</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>74.56934</Time>
+          <Value>19</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>
@@ -402,6 +498,22 @@
         <Keyframe>
           <Time>40</Time>
           <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>63.14</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>64.16251</Time>
+          <Value>-3</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>68.19</Time>
+          <Value>-3</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>74</Time>
+          <Value>7</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>
@@ -486,7 +598,7 @@
           <Value>0.1</Value>
         </Keyframe>
         <Keyframe>
-          <Time>54.5928154</Time>
+          <Time>54.7</Time>
           <Value>0.5</Value>
         </Keyframe>
         <Keyframe>
@@ -645,7 +757,7 @@
       <UniformName>skEyeColorG</UniformName>
       <Keyframes>
         <Keyframe>
-          <Time>59.5</Time>
+          <Time>59.6</Time>
           <Value>0</Value>
         </Keyframe>
         <Keyframe>
@@ -653,7 +765,7 @@
           <Value>1</Value>
         </Keyframe>
         <Keyframe>
-          <Time>60.5</Time>
+          <Time>60.1</Time>
           <Value>0</Value>
         </Keyframe>
       </Keyframes>
@@ -662,7 +774,7 @@
       <UniformName>skEyeColorB</UniformName>
       <Keyframes>
         <Keyframe>
-          <Time>61.5</Time>
+          <Time>61.7</Time>
           <Value>0</Value>
         </Keyframe>
         <Keyframe>
@@ -670,7 +782,11 @@
           <Value>1</Value>
         </Keyframe>
         <Keyframe>
-          <Time>62.1098938</Time>
+          <Time>62</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>62.45</Time>
           <Value>0</Value>
         </Keyframe>
       </Keyframes>
@@ -679,12 +795,168 @@
       <UniformName>skMovement</UniformName>
       <Keyframes>
         <Keyframe>
-          <Time>0</Time>
+          <Time>57.809803</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>58.87799</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>61.5</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>62.1098938</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>62.87408</Time>
+          <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>skColor</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>56</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>57.6</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>57.809803</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>57.94</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>58.2</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>59.4</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>59.7</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>60</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>60.1</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>61.7</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>62</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>62.17</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>63.0207367</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>bloodCellWhite</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>64.79</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>68.37752</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>71.75</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>73.27</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>73.83</Time>
           <Value>0</Value>
         </Keyframe>
         <Keyframe>
           <Time>113.345</Time>
           <Value>1</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>bloodCellTunnelRotation</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>33.1782532</Time>
+          <Value>10</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>40.183</Time>
+          <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>40.3047256</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>62</Time>
+          <Value>10</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>64.16</Time>
+          <Value>3.9</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>70.02392</Time>
+          <Value>1.5</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>73.73648</Time>
+          <Value>0</Value>
+        </Keyframe>
+      </Keyframes>
+    </Uniform>
+    <Uniform>
+      <UniformName>cellMovement</UniformName>
+      <Keyframes>
+        <Keyframe>
+          <Time>0</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>22.8369179</Time>
+          <Value>0</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>32.91203</Time>
+          <Value>10</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>73.98803</Time>
+          <Value>11</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>80.71487</Time>
+          <Value>9</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>
@@ -722,15 +994,15 @@
           <ShaderPath>..\..\glsl\BloodTunnel.glsl</ShaderPath>
         </ShaderKeyframe>
         <ShaderKeyframe>
-          <Time>74.4664154</Time>
+          <Time>73.76547</Time>
           <ShaderPath>.\Cells.glsl</ShaderPath>
         </ShaderKeyframe>
         <ShaderKeyframe>
-          <Time>82.35859</Time>
+          <Time>82.1366</Time>
           <ShaderPath>.\Neuronen.glsl</ShaderPath>
         </ShaderKeyframe>
         <ShaderKeyframe>
-          <Time>94.61664</Time>
+          <Time>94.3946457</Time>
           <ShaderPath>.\Heart.glsl</ShaderPath>
         </ShaderKeyframe>
       </ShaderKeyframes>
