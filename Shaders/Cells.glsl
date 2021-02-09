@@ -1,5 +1,6 @@
 // template: https://www.shadertoy.com/view/Wtffzn
-// https://thebookofshaders.com/12/?lan=de -> Erklärung Voronoi
+// https://thebookofshaders.com/12/?lan=de ->Voronoi
+
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -8,11 +9,11 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
-uniform float cellDiffusion; // 0.5
+uniform float cellDiffusion;
 uniform float cellZoom;
-uniform float cellRed;  // 1.85
-uniform float cellGreen; // 0.25
-uniform float cellBlue; // 0.25
+uniform float cellRed;  
+uniform float cellGreen; 
+uniform float cellBlue; 
 uniform float cellMovement;
 
 vec3 backgroundColor = vec3(0.0);
@@ -23,17 +24,16 @@ vec2 random( vec2 p ) {
 
 void main()
 {
-    //float cellDiffusion = 0.5;
-    //float cellZoom = 10.0;
-
+   
     // Normalized pixel coordinates (from 0 to 1)
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    st.y *= u_resolution.y/u_resolution.x;    // Anpassung des Verhältnisses der Fenstergröße -> (Keine Verzerrung)
+    // adapt aspect ratio 
+    st.y *= u_resolution.y/u_resolution.x;    
     
     //tile
-	st *= cellZoom;  // Je mehr der Wert des cellZooms größer ist, umso mehr Zellen sieht man -> 0 - 10
-    vec2 i_st = floor(st);  // floor(x): Findet den nächsten Integer, kleiner oder gleich x -> Gibt an welche Kachel zwischen 0 und 10
-    vec2 f_st = fract(st);  // fract(x): nimmt den hinteren Kommateil -> Gibt Position innerhalb der Kachel an
+	st *= cellZoom;  //multiply view / coord. system
+    vec2 i_st = floor(st);  // floor(x): next int smaller or equal x -> to chose tile 0.... 
+    vec2 f_st = fract(st);  // fract(x): after comma part -> position in tile
     vec3 col = vec3(0.0, 0.0, 0.0);
     
     
@@ -44,24 +44,25 @@ void main()
     {
         for(int x = -1; x <= 1; x++)
         {
-            vec2 neighbor = vec2(float(x), float(y)); // Nachbar Position im Raster
+            vec2 neighbor = vec2(float(x), float(y)); //neighbor position in tiles
             
-            vec2 point = random(i_st + neighbor); // Zufällige Position vom aktuellen + Nachbarposition im Raster
+            vec2 point = random(i_st + neighbor); //random current position + Neighbor position in grid
             
             point = vec2(.5) + .5 * (sin(cellMovement + 6.075 * point)); // u_time: cells movement from point is between 0 and 1
                    
-            vec2 diff = neighbor + point - f_st; // Vektor zwischen dem Pixel und dem Punkt
+            vec2 diff = neighbor + point - f_st; // vector between pixel and point 
             
             float dist = length(diff); // Distance to the point
             
-            m_dist = min(m_dist, dist); // min(x, y): Gibt den kleineren Wert von den beiden zurück -> Nimm die nähere Distanz  
+            m_dist = min(m_dist, dist); // min(x, y): return minimum value-> closer distance  
         }
     }
 
-    // Bedeutung von - & + bei col: Bestimmt ob die Kante oder die Fläche rot oder weiß ist
-    col += m_dist;  // Zeichne Minimum Distanz (Distanz Feld)
-    col -= clamp(sin(1.*m_dist), 0., 1.) * cellDiffusion;   // min(max(sin(1.*m_dist), minVal), maxVal) -> Gibt Werte zwischen 0 und 1 aus; Alles über 1 = 1 & alles unter 0 = 0
     
+    col += m_dist;  // draw minimum distance (Distance Field)
+    col -= clamp(sin(1.*m_dist), 0., 1.) * cellDiffusion;   // min(max(sin(1.*m_dist), minVal), maxVal) -> Value between 0 and 1
+    
+    //coloring
     col.r += cellRed;     
     col.g += cellGreen; 
     col.b += cellBlue;
