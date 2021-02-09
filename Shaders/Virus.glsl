@@ -12,8 +12,8 @@ uniform vec2 u_resolution;
 uniform float u_time;
 uniform sampler2D u_buffer0;
 
-//uniform float virusZoom;
-//uniform float virusEmergence; 
+uniform float virusZoom;
+uniform float virusEmergence; 
 uniform float virusRotation1;
 uniform float virusRotation2;
 uniform float virusPosX1;
@@ -30,9 +30,6 @@ mat2 rot(float a) {
     return mat2(cos(a), -sin(a), sin(a), cos(a));
 }
 
-
-const float virusZoom=2.;
-const  float virusEmergence=0.5; 
 
 // IQ's noise function 
 float pn(in vec3 p){
@@ -137,7 +134,7 @@ void main(){
 
 
    // ray marching loop
-   for (int i=0; i<100; i++) {
+   for (int i=0; i<MAX_STEPS; i++) {
 
       if(td>(1. - 1./200.) || d<SURF_DIST || t>MAX_DIST)break;
        

@@ -229,13 +229,16 @@ void main()
 
 
    /*Background Tunnel*/
+   //2d transformation to tunnel -> converts the cartesian coordinates to polar and then inverts the radius
     vec2 p = gl_FragCoord.xy/u_resolution.xy;
     p = (p - 0.5); //-1 to 1
     
     float depth = (p.x*p.x + p.y*p.y);
    
+    // get polar coordinates   
     float angle = atan(p.x, p.y) + bloodCellTunnelRotation;
 
+    // pack and animate    
    	vec2 t = vec2(
         angle + 0.1 / depth,
         0.33/ depth + (bloodCellTunnelRotation * 2.2)
@@ -243,6 +246,7 @@ void main()
     
     float d = clamp(3.0 * depth, 0., 1.0);
    
+    // fetch from texture    
     gl_FragColor += texture2D(u_buffer1, t) * vec4(d * (d * bloodCellTunnelIntensity), d, d, d);
 
 }
