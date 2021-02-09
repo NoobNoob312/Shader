@@ -88,7 +88,7 @@
         </Keyframe>
         <Keyframe>
           <Time>110</Time>
-          <Value>0</Value>
+          <Value>0.01</Value>
         </Keyframe>
       </Keyframes>
     </Uniform>
@@ -862,12 +862,16 @@
           <Value>0</Value>
         </Keyframe>
         <Keyframe>
-          <Time>61.9623146</Time>
+          <Time>61.85</Time>
           <Value>1</Value>
         </Keyframe>
         <Keyframe>
           <Time>62</Time>
           <Value>1</Value>
+        </Keyframe>
+        <Keyframe>
+          <Time>62.06</Time>
+          <Value>0</Value>
         </Keyframe>
         <Keyframe>
           <Time>62.14831</Time>

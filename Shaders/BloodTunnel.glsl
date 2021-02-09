@@ -1,4 +1,5 @@
 // template: tunnel https://www.shadertoy.com/view/3tB3Rw
+// tunnel: https://iquilezles.org/www/articles/tunnel/tunnel.htm / https://iquilezles.org/www/articles/deform/deform.htm
 // template: bloodCells/raymarching https://www.shadertoy.com/view/4dSfRc
 // tutorial: https://www.shadertoy.com/view/4dSfRc
 
@@ -131,7 +132,7 @@ float GetDist(vec3 p) {
 
 //Ray March algorithm
 float RayMarch(vec3 ro, vec3 rd) {
-    float dO=0.;
+    float dO=0.; //distance origin
 
     for(int i = 0; i < MAX_STEPS; i++) {
         vec3 p = ro + rd*dO;
@@ -149,12 +150,12 @@ float RayMarch(vec3 ro, vec3 rd) {
 }
 
 
-/*To-Do: Verstehen*/
 //The normal can be calculated by taking the central difference on the distance field
 vec3 GetNormal(vec3 p) {
     float d = GetDist(p);
     vec2 e = vec2(.01, 0);
     
+    //get distance of near surface points
     vec3 n = d - vec3(
         GetDist(p-e.xyy),
         GetDist(p-e.yxy),
@@ -173,7 +174,7 @@ float GetLight(vec3 p, vec3 lPos) {
    //light vector
     vec3 l = normalize(lightPos-p *.4);
 
-    //apply diffuse lighting we have to calculate the normal of shadingpoint p 
+    //to apply diffuse lighting we have to calculate the normal of shadingpoint p 
     vec3 n = GetNormal(p);
     
     //diffuse lighting through dot product of unit vectors
@@ -186,7 +187,7 @@ float GetLight(vec3 p, vec3 lPos) {
 vec3 createBloodCell(vec3 ro, vec3 rd, vec3 light, vec3 col){
     
     float d = RayMarch(ro, rd );
-    //endgültiger Vektor für jeden Pixel der schneidet
+    //final Vector for pixels / surface point of object
     vec3 p = ro + rd * d;
 
     //add diffuse light
@@ -202,9 +203,8 @@ void main()
 {
 
 
-    //Anpassen der Auflösung so das 0,0 in der Mitte ist + sinus änderung für reinzoom effekt
-    //compute ray direction for each pixel
-    vec2 uv =1.5*(gl_FragCoord.xy - .5*u_resolution.xy)/u_resolution.y;
+    //set 0|0 in middle
+    vec2 st =1.5*(gl_FragCoord.xy - .5*u_resolution.xy)/u_resolution.y;
 
     vec3 col = vec3(0.0, 0.0, 0.0);
 
@@ -212,10 +212,10 @@ void main()
     vec3 ro = vec3(0.,2.5+3.,0.5);
         
     //rotation view
-    uv = (rot(bloodCellTunnelRotation*3.)) * uv;
+    st = (rot(bloodCellTunnelRotation*3.)) * st;
   
     //normalize to get direction
-    vec3 rd = normalize(vec3(uv.x, uv.y, 1)); //ray direction, horizontal, vertical, back and forth
+    vec3 rd = normalize(vec3(st.x, st.y, 1)); //ray direction, horizontal, vertical, back and forth
 
     //Licht ändert zyklisch die position
     vec3 light = vec3(1.+sin(u_time),3.+cos(u_time),1.);
