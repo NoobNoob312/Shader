@@ -1,5 +1,8 @@
 // template: https://www.shadertoy.com/view/wsyyzt -> https://www.shadertoy.com/view/wsGczd
+// template: Cloudy Spikeball - Duke https://www.shadertoy.com/view/MljXDw
 // https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-generating-camera-rays/generating-camera-rays -> Ray Erklärung
+
+
 
 #ifdef GL_ES
 precision mediump float;
@@ -10,46 +13,20 @@ uniform float u_time;
 uniform sampler2D u_buffer0;
 
 uniform float virusZoom;
-uniform float virusEmergence; // 0.5 /*0,2 bzw 0,3 für super coolen leucht effekt*/
+uniform float virusEmergence; 
 uniform float virusRotation1;
 uniform float virusRotation2;
 uniform float virusPosX1;
 uniform float virusPosX2;
 
-
-
-
-/*
-
-	Fiery Spikeball
-	---------------
-
-	Making some modifications to Duke's "Cloudy Spikeball" port to produce a fiery version.
-
-	I trimmed the original shader down a bit, changed the weighting slightly, made a couple of 
-	sacrifices to the spike shape to tighten up the distance equation, etc.
-
-
-	Cloudy Spikeball - Duke
-	https://www.shadertoy.com/view/MljXDw
-
-    // Port from http://glslsandbox.com/e#1802.0, with some modifications.
-    //--------------
-    // Posted by Las
-    // http://www.pouet.net/topic.php?which=7920&page=29&x=14&y=9
-	// By the way, the demo is really good. Definitely worth watching.
-
-
-*/
-
+//rotation matrix
 mat2 rot(float a) {
     return mat2(cos(a), -sin(a), sin(a), cos(a));
 }
 
 
 
-// IQ's noise
-// TODO verstehen -> nur nilu -> rolf will das nicht verstehen -> Rolf: "Viellleicht sollte man wissen was noise ist"
+// IQ's noise function 
 float pn(in vec3 p){
     vec3 ip = floor(p);
     p = fract(p);
@@ -65,10 +42,11 @@ float fpn(vec3 p){
 }
 
 // Spikeball. Using 16 hardcoded points, reflected to give 32 spikes in all.
+//Calculate distance to spikeball surface for ray marching 
 float spikeball(vec3 p) {
    
     // Ball
-    float d = length(p) - 0.6;  // Nähe des Balls
+    float d = length(p) - 0.6;  // distance of spikeball
 	float ao = (0.5 * (cos(u_time) + 1.));  // Größe der Spikes inwieweit diese "ausschlagen" -> implizit manche stärker ausschlagen
     float o = (0.007 * ao * ao* ao);
 
@@ -83,10 +61,10 @@ float spikeball(vec3 p) {
         abs(vec4(dot(p,vec3(0.000,0.357 + o,0.934)), dot(p,vec3(0.000,-0.357 - o,0.934)), dot(p, vec3(0.934,0.000,0.357)), dot(p,vec3(-0.934,0.000,0.357))))),
         abs(vec4(dot(p,vec3(0.577 + o,0.577 + o,0.577 + o)), dot(p,vec3(-0.577,0.577,0.577)), dot(p, vec3(0.577,-0.577,0.577)), dot(p,vec3(0.577,0.577,-0.577)))));
     b.xy = max(b.xy, b.zw);
-    b.x = pow(max(b.x, b.y), 80.);  // Bestimmt die Stachelbreite/Stachellänge
+    b.x = pow(max(b.x, b.y), 80.);  // spike thickness/ length
 	
-    // exp2(x): 2^x
-    return d - exp2(b.x*(sin(u_time+1.)*0.25 + 0.75)); // Gibt die Distanz der Vektorlänge der Spikes an
+
+    return d - exp2(b.x*(sin(u_time+1.)*0.25 + 0.75)); 
 }
 
 
@@ -155,15 +133,10 @@ void main(){
    vec3 tc = vec3(0.);
     
 
-    
-   // Tidied the raymarcher up a bit. Plus, got rid some redundancies.
 
    // rm loop
    for (int i=0; i<64*64*64; i++) {
 
-      // Loop break conditions. Seems to work, but let me know if I've 
-      // overlooked something. The middle break isn't really used here, but
-      // it can help in certain situations.
       if(td>(1. - 1./200.) || d<0.001*t || t>1200.)break;
        
       // evaluate distance function
@@ -192,6 +165,5 @@ void main(){
    // Fire palette.
    tc = firePalette(tc.x);
     
-   // No gamma correction. It was a style choice, but usually, you should have it.   
    gl_FragColor = vec4(tc, 1.); //vec4(tc.x+td*2., ld*3., 0, tc.x);
 }
