@@ -1,3 +1,4 @@
+//tunnel https://www.shadertoy.com/view/3tB3Rw
 
 #ifdef GL_ES
 precision mediump float;
@@ -11,7 +12,15 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform float u_time;
 uniform sampler2D u_buffer1;
-uniform  float tod;
+uniform float bloodCellTunnelIntensity;
+uniform float bloodCellRotationSpeed;
+uniform float bloodCellRed;
+uniform float bloodCellZoom;
+uniform float bloodCellWhite;
+uniform float bloodCellTunnelRotation;
+
+
+
 
 mat2 rot(float a) {
     return mat2(cos(a), -sin(a), sin(a), cos(a));
@@ -37,53 +46,52 @@ vec2 radius = vec2(0.53,0.5);
 
 
     //set torus1
-    vec3 tp = p-vec3(-1.,3.,8);
-    tp.yz *= rot(0.5*sin(u_time));
-    tp.xy *= rot(3.*cos(u_time));
+    vec3 tp = p-vec3(-1.,3.,8.-bloodCellZoom);
+    tp.yz *= rot(0.5*sin(bloodCellRotationSpeed));
+    tp.xy *= rot(3.*cos(bloodCellRotationSpeed));
    
 
 //set torus2
-     vec3 tp2 = p-vec3(1.,4.,6);
-    tp2.yz *= rot(2.*sin(u_time));
-    tp2.xy *= rot(2.*cos(u_time));
+     vec3 tp2 = p-vec3(1.,4.,6.-bloodCellZoom);
+    tp2.yz *= rot(2.*sin(bloodCellRotationSpeed));
+    tp2.xy *= rot(2.*cos(bloodCellRotationSpeed));
 
 //set torus3
-     vec3 tp3 = p-vec3(-1.,6.,8);
-    tp3.yz *= rot(1.*sin(u_time));
-    tp3.xy *= rot(4.*cos(u_time));
-
+     vec3 tp3 = p-vec3(-1.,6.,8.-bloodCellZoom);
+    tp3.yz *= rot(1.*sin(bloodCellRotationSpeed));
+    tp3.xy *= rot(4.*cos(bloodCellRotationSpeed));
 
 //set torus4
-     vec3 tp4 = p-vec3(1.,7.,10);
-    tp4.yz *= rot(5.*sin(u_time));
-    tp4.xy *= rot(2.*cos(u_time));
+     vec3 tp4 = p-vec3(1.,7.,10.-bloodCellZoom);
+    tp4.yz *= rot(5.*sin(bloodCellRotationSpeed));
+    tp4.xy *= rot(2.*cos(bloodCellRotationSpeed));
 
 //set torus5
-     vec3 tp5 = p-vec3(-0,5.,10);
-    tp5.yz *= rot(3.1*sin(u_time));
-    tp5.xy *= rot(3.*cos(u_time));
+     vec3 tp5 = p-vec3(-0,5.,10.-bloodCellZoom);
+    tp5.yz *= rot(3.1*sin(bloodCellRotationSpeed));
+    tp5.xy *= rot(3.*cos(bloodCellRotationSpeed));
 
 
 //set torus6
-     vec3 tp6 = p-vec3(1.,8.,8);
-    tp6.yz *= rot(4.4*sin(u_time));
-    tp6.xy *= rot(6.*cos(u_time));
+     vec3 tp6 = p-vec3(1.,8.,8.-bloodCellZoom);
+    tp6.yz *= rot(4.4*sin(bloodCellRotationSpeed));
+    tp6.xy *= rot(6.*cos(bloodCellRotationSpeed));
 
 //set torus7
-     vec3 tp7 = p-vec3(3.,6.,8);
-    tp7.yz *= rot(-1.*sin(u_time));
-    tp7.xy *= rot(1.*cos(u_time));
+     vec3 tp7 = p-vec3(3.,6.,8.-bloodCellZoom);
+    tp7.yz *= rot(-1.*sin(bloodCellRotationSpeed));
+    tp7.xy *= rot(1.*cos(bloodCellRotationSpeed));
 
 
 //set torus8
-     vec3 tp8 = p-vec3(-3.,4.,10);
-    tp8.yz *= rot(2.*sin(u_time));
-    tp8.xy *= rot(6.*cos(u_time));
+     vec3 tp8 = p-vec3(-3.,4.,10.-bloodCellZoom);
+    tp8.yz *= rot(2.*sin(bloodCellRotationSpeed));
+    tp8.xy *= rot(6.*cos(bloodCellRotationSpeed));
 
 //set torus9
-     vec3 tp9 = p-vec3(-1,8.,10);
-    tp9.yz *= rot(-.1*sin(u_time));
-    tp9.xy *= rot(-3.*cos(u_time));
+     vec3 tp9 = p-vec3(-1,8.,10.-bloodCellZoom);
+    tp9.yz *= rot(-.1*sin(bloodCellRotationSpeed));
+    tp9.xy *= rot(-3.*cos(bloodCellRotationSpeed) );
 
 
 
@@ -187,7 +195,7 @@ vec3 createBloodCell(vec3 ro, vec3 rd, vec3 light, vec3 col){
     float dif = GetLight(p,light);
 
     //return col += vec3(dif, .0, .0);
-     return col += vec3(pow (dif, .60),0,0);
+     return col += vec3(bloodCellRed*pow (dif, .60),dif*bloodCellWhite,dif*bloodCellWhite);
 
 }
 
@@ -210,14 +218,11 @@ void main()
         
  
     //compute ray direction for each pixel
-
-    if (tod>0.){
-    uv = (rot(-u_time*3.)) * uv;
-    }
-    else{
-     uv = (rot(-)) * uv;   
-    }
     
+ 
+ 
+    uv = (rot(bloodCellTunnelRotation*3.)) * uv;
+  
     vec3 rd = normalize(vec3(uv.x, uv.y, 1)); //ray direction, horizont, vertikal, vo/zurueck
 
     //Licht ändert zyklisch die position
@@ -242,14 +247,15 @@ void main()
     
     float depth = (p.x*p.x + p.y*p.y);
    
-    float angle = atan(p.x, p.y) + u_time;
+    float angle = atan(p.x, p.y) + bloodCellTunnelRotation;
 
    	vec2 t = vec2(
         angle + 0.1 / depth,
-        0.33/ depth + (u_time * 2.2)
+        0.33/ depth + (bloodCellTunnelRotation * 2.2)
     );
     
-    float d = clamp(3.0 * depth, 2., 1.0);
-    gl_FragColor += texture2D(u_buffer1, t) * vec4(d * (d * 0.5), d, d, d);
-  
+    float d = clamp(3.0 * depth, 0., 1.0);
+   
+    gl_FragColor += texture2D(u_buffer1, t) * vec4(d * (d * bloodCellTunnelIntensity), d, d, d);
+
 }
