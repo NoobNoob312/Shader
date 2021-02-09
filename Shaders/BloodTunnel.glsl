@@ -1,17 +1,26 @@
-//tunnel https://www.shadertoy.com/view/3tB3Rw
+// template: tunnel https://www.shadertoy.com/view/3tB3Rw
+// template: bloodCells/raymarching https://www.shadertoy.com/view/4dSfRc
+// tutorial: https://www.shadertoy.com/view/4dSfRc
+
 
 #ifdef GL_ES
 precision mediump float;
 #endif
 
+//Constants for Raymarching
 #define MAX_STEPS 100
 #define MAX_DIST 100.
 #define SURF_DIST .01
+
+
 #define PI 3.141592653589793
+
 
 uniform vec2 u_resolution;
 uniform float u_time;
 uniform sampler2D u_buffer1;
+
+//ShaderForm uniforms
 uniform float bloodCellTunnelIntensity;
 uniform float bloodCellRotationSpeed;
 uniform float bloodCellRed;
@@ -21,30 +30,29 @@ uniform float bloodCellTunnelRotation;
 
 
 
-
+//rotation matrix
 mat2 rot(float a) {
     return mat2(cos(a), -sin(a), sin(a), cos(a));
 }
 
 
-//Formel des Blutkörperchen
+//function for bloodcells/Torus
+//https://www.youtube.com/watch?v=Ff0jJyyiVyw
 float Torus(vec3 p, vec2 r){
-    //Ziehen Radius ab um schlauchring zu bilden
+    //subtract radius to build ring
     float x = length(p.xz)-r.x;
     return length (vec2(x,p.y))-r.y;   
 }
 
 
 float GetDist(vec3 p) {
-    //Raymarch anhand der dinstanzfelder 1x----2x----3x----4x
+    //Raymarch with dinstance fields 1x----2x----3x----4x
     
-
-
-    //p.x = fract(p.x/4.)*4.-2.;
   
-vec2 radius = vec2(0.53,0.5);
+    //r1 and r1 of torus
+    vec2 radius = vec2(0.53,0.5);
 
-
+//set distance to torus middle point and set rotation for every cellpoint
     //set torus1
     vec3 tp = p-vec3(-1.,3.,8.-bloodCellZoom);
     tp.yz *= rot(0.5*sin(bloodCellRotationSpeed));
@@ -95,7 +103,7 @@ vec2 radius = vec2(0.53,0.5);
 
 
 
-    //Calc Distance
+    //Calc Distance Torus 
     float td = Torus(tp, radius); 
     float td2 = Torus(tp2, radius); 
     float td3 = Torus(tp3, radius); 
@@ -107,10 +115,7 @@ vec2 radius = vec2(0.53,0.5);
     float td9 = Torus(tp9, radius); 
       
 
-    //float planeDist = p.y; //ground plain
-
-
-    //Nehme kleinsten Abstand und passe somit die Schrittweite in RayMarch an
+    //take min distance for next step range in ray march
     float d = min(td2,td);
     d = min(td3,d);
     d = min(td4,d);
@@ -124,23 +129,22 @@ vec2 radius = vec2(0.53,0.5);
 }
 
 
-//Funktion für Raymarch rechnung zum schnittpunkt https://www.shadertoy.com/view/4dSfRc
+//Ray March algorithm
 float RayMarch(vec3 ro, vec3 rd) {
     float dO=0.;
 
     for(int i = 0; i < MAX_STEPS; i++) {
         vec3 p = ro + rd*dO;
 
-        //Bekommen Distanz zwischen Torus und vektor zurück
+        //get distance between point and torus
         float dS = GetDist(p);
         dO += dS;
         
 
+        //leaves if maximal distance is reached or distance very small
         if(dO>MAX_DIST || dS<SURF_DIST) break;
     }
     
-
-    //Gebe FAktor zurück
     return dO;
 }
 
@@ -161,27 +165,21 @@ vec3 GetNormal(vec3 p) {
 
 
 float GetLight(vec3 p, vec3 lPos) {
-    //vec3 lightPos = vec3(cos(u_time), 4.,cos(u_time));
-    //vec3 lightPos = vec3(sin(u_time),2.,1.);
+  
 
-    //Position wo sich das Licht befinden soll
+    //position of light source
     vec3 lightPos = lPos;
    
+   //light vector
     vec3 l = normalize(lightPos-p *.4);
 
     //apply diffuse lighting we have to calculate the normal of shadingpoint p 
     vec3 n = GetNormal(p);
     
-    //diffuse lighting = dif
+    //diffuse lighting through dot product of unit vectors
     float dif = clamp(dot(n, l), 0.0, 1.);
 
 
-    //Nilufar stinkt
-    //Schatten werfen
-    //float d = RayMarch(p+n*SURF_DIST*2., l);
-    //dif*= 5. /dot(lightPos -p,lightPos-p);
-    //if(d<length(lightPos-p)) dif *= .1;
-    
     return dif;
 }
 
@@ -191,10 +189,10 @@ vec3 createBloodCell(vec3 ro, vec3 rd, vec3 light, vec3 col){
     //endgültiger Vektor für jeden Pixel der schneidet
     vec3 p = ro + rd * d;
 
-
+    //add diffuse light
     float dif = GetLight(p,light);
 
-    //return col += vec3(dif, .0, .0);
+    //return color, pow for color saturation
      return col += vec3(bloodCellRed*pow (dif, .60),dif*bloodCellWhite,dif*bloodCellWhite);
 
 }
@@ -207,43 +205,32 @@ void main()
     //Anpassen der Auflösung so das 0,0 in der Mitte ist + sinus änderung für reinzoom effekt
     //compute ray direction for each pixel
     vec2 uv =1.5*(gl_FragCoord.xy - .5*u_resolution.xy)/u_resolution.y;
-    //vec2 uv =1.5*(gl_FragCoord.xy - .5*u_resolution.xy)/u_resolution.y;
-
-
 
     vec3 col = vec3(0.0, 0.0, 0.0);
 
-    //ray origins. punkt von dem wir aus schauen
+    //ray origins. point of looking
     vec3 ro = vec3(0.,2.5+3.,0.5);
         
- 
-    //compute ray direction for each pixel
-    
- 
- 
+    //rotation view
     uv = (rot(bloodCellTunnelRotation*3.)) * uv;
   
-    vec3 rd = normalize(vec3(uv.x, uv.y, 1)); //ray direction, horizont, vertikal, vo/zurueck
+    //normalize to get direction
+    vec3 rd = normalize(vec3(uv.x, uv.y, 1)); //ray direction, horizontal, vertical, back and forth
 
     //Licht ändert zyklisch die position
-    //vec3 light = vec3(0,4.,1.);
-      //light.xy *= rot(u_time*3.)*uv; //Teste mit rotation mitdrehen
-    
     vec3 light = vec3(1.+sin(u_time),3.+cos(u_time),1.);
   
 
-    
-
-//Erstelle Blutkörperchen
+    //create bloodcell with ray origin, ray direction, light and col
     col = createBloodCell(ro,rd,light,col);
-
     gl_FragColor = vec4(col,1.0);
     
    
+
+
+   /*Background Tunnel*/
     vec2 p = gl_FragCoord.xy/u_resolution.xy;
     p = (p - 0.5); //-1 to 1
-
-    
     
     float depth = (p.x*p.x + p.y*p.y);
    
