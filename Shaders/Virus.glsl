@@ -87,6 +87,7 @@ float map(vec3 p) {
     sp2.xy *= rotationSp2;
     sp2.xz *= rotationSp2;
 
+    //distance to spikeball point
     float spikeball1 = spikeball(sp1) +  fpn(p*50. + u_time*15.)*0.8;
 
     float spikeball2 = spikeball(sp2) +  fpn(p*50. + u_time*15.)*0.8;
@@ -112,7 +113,6 @@ void main(){
   
    // p: position on the ray
    // rd: direction of the ray
-   // Reversed the Z-coordinates to see the virus
    // normalize() for unit vektor = lenght 1 --> only direction relevant
    // watch from point (0, 0, -8) in direction "rd"
    vec3 rd = normalize(vec3((gl_FragCoord.xy - .5*u_resolution.xy)/u_resolution.y * virusZoom, 1.));
@@ -140,7 +140,7 @@ void main(){
        
       // evaluate distance function
    
-      d = map(ro + t*rd); // add to vector untill hit
+      d = map(ro + t*rd); // get object min distance
       
       // check whether we are close enough (step)
       // compute local density and weighting factor 

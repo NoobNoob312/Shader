@@ -22,7 +22,7 @@ void main() {
 
     vec3 p, o;
 
-    // Wie oft Neuronen gezeichnet werden
+    
     for(int i = 0; i < numberNeurons; i++)
     {
         o = p;

@@ -11,36 +11,20 @@ uniform float skEyeColorB;
 uniform float skColor;
 uniform float skMovement;
 
-/*!!!To-Do: Evnt. Kacheln und weitere anpassungen in form von uniform variablen !!!*/
-
-//vec3 skullColor = vec3(skColor);
 
 vec3 eyeColor = vec3(skEyeColorR,skEyeColorG, skEyeColorB); 
 vec3 white = vec3(0.975,0.975,0.975);
 vec3 black = vec3(0.010,0.010,0.010);
 vec3 skullColor = vec3(skColor);
- 
- 
- 
+
+
 float rectFunc(float x, float from, float to)
 {
     return step(from, x) - step(to, x);
 }
 
 
-//gerade nicht benuetzt
-vec3 drawPixels(vec2 uv, float xStart, float xStop, float yStart, float yStop, vec3 paint, vec3 c){
-   float xPixel = rectFunc(uv.x,xStart,xStop);
-   float yPixel = rectFunc(uv.y,yStart,yStop);
-   vec3 color = mix(c, paint, xPixel*yPixel);
-   return color;
-}
- 
-mat2 rotate2d(float _angle){
-    return mat2(cos(_angle),-sin(_angle),
-                sin(_angle),cos(_angle));
-}
-
+ //rectangle draw function
 vec3 drawPixelsFreq(vec2 uv, float xStart, float xStop, float yStart, float yStop, vec3 paint, vec3 c, float time){
    float xPixel = rectFunc(uv.x,xStart,xStop);
    float yPixel = rectFunc(uv.y,yStart+time,yStop+time);
@@ -62,17 +46,10 @@ void main() {
    float pixelCount = 21.;
     uv = uv *pixelCount;
   
-
-   // move space from the center to the vec2(0.0)
     uv -= vec2(10);
-    // rotate the space
-    //uv = rotate2d(abs(sin(u_time)*PI +3.4)) * uv;
-    // move it back to the original place
     uv += vec2(10);
 
 //Knochen linksOben
-
-
 color = drawPixelsFreq(uv, 5., 6., 14.,15., skullColor, color, freqRest);
 color = drawPixelsFreq(uv, 4.,5., 15.,16., skullColor, color, freqRest);
 color = drawPixelsFreq(uv, 2., 4., 16.,17., skullColor, color, freqRest);
@@ -101,9 +78,6 @@ color = drawPixelsFreq(uv, 3., 4., 4.,5., skullColor, color, freqRest);
    
 //Stirn
 //Zeile 14
-
-
-
 color = drawPixelsFreq(uv, 7., 14., 14.,15., skullColor, color, freqRest);
 //Zeile 13
 color = drawPixelsFreq(uv, 6., 15., 13.,14., skullColor, color, freqRest);

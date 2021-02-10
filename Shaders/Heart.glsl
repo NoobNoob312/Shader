@@ -60,7 +60,7 @@ void main() {
     float a = atan(st.x,st.y)/3.141593; 
 
      
-    //Calculate absolut value of Vector (Pythagoras) -> a = Vector: |a| -> vector length
+    //Calculate absolut value of Vector -> a = Vector: |a| -> vector length
     float r = length(st);
 
     
