@@ -193,7 +193,7 @@ vec3 createBloodCell(vec3 ro, vec3 rd, vec3 light, vec3 col){
     //add diffuse light
     float dif = GetLight(p,light);
 
-    //return color, pow for color saturation
+    //return color, pow for gamma
      return col += vec3(bloodCellRed*pow (dif, .60),dif*bloodCellWhite,dif*bloodCellWhite);
 
 }
